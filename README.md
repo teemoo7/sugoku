@@ -1,6 +1,6 @@
 # sugoku
 
-[![Build Status](https://travis-ci.org/teemoo7/sugoku.svg?branch=master)](https://travis-ci.org/teemoo7/sugoku) [![Go Report Card](https://goreportcard.com/badge/github.com/teemoo7/sugoku)](https://goreportcard.com/report/github.com/teemoo7/sugoku)
+[![Build Status](https://travis-ci.org/teemoo7/sugoku.svg?branch=master)](https://travis-ci.org/teemoo7/sugoku) [![Go Report Card](https://goreportcard.com/badge/github.com/teemoo7/sugoku)](https://goreportcard.com/report/github.com/teemoo7/sugoku) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ch.teemoo%3Asugoku&metric=coverage)](https://sonarcloud.io/dashboard?id=ch.teemoo%3Asugoku) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ch.teemoo%3Asugoku&metric=alert_status)](https://sonarcloud.io/dashboard?id=ch.teemoo%3Asugoku)
 
 sugoku is a basic Sudoku solver, written in Golang.
 
