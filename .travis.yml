@@ -1,7 +1,10 @@
+dist: trusty
 language: go
 go:
   - "1.13"
-
+addons:
+  sonarcloud:
+    organization: "teemoo7-github"
 before_install:
   - go get github.com/stretchr/testify/assert
 before_script:
@@ -9,3 +12,4 @@ before_script:
 script:
   - go build ./...
   - go test -cover -v ./...
+  - sonar-scanner
