@@ -3,8 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 type testPairArrayBool struct {
@@ -30,7 +30,7 @@ type testTupleDataPosition struct {
 }
 
 func TestLoadGame(t *testing.T) {
-	var tests = [] testPairDataError{
+	var tests = []testPairDataError{
 		{"", errors.New("incorrect size for game raw data")},
 		{"3821731298", errors.New("incorrect size for game raw data")},
 		{"86437125932584976197126584343619258719865743225748391668973412571352869454291637812312312", errors.New("incorrect size for game raw data")},
@@ -46,7 +46,7 @@ func TestLoadGame(t *testing.T) {
 }
 
 func TestIsValidGame(t *testing.T) {
-	var tests = [] testPairDataBool{
+	var tests = []testPairDataBool{
 		{"864371259325849761971265843436192587198657432257483916689734125713528694542916378", true},
 		{"004300209005009001070060043006002087190007400050083000600000105003508690042910300", true},
 		{"884300209005009001070060043006002087190007400050083000600000105003508690042910300", false},
@@ -60,12 +60,12 @@ func TestIsValidGame(t *testing.T) {
 }
 
 func TestHasDuplicates(t *testing.T) {
-	var tests = [] testPairArrayBool{
-		{[9] int{4, 0, 0, 0, 0, 0, 0, 0, 0}, false},
-		{[9] int{4, 4, 0, 0, 0, 0, 0, 0, 0}, true},
-		{[9] int{}, false},
-		{[9] int{0, 2, 5, 2, 3, 0, 8, 7, 0}, true},
-		{[9] int{0, 2, 5, 1, 3, 0, 8, 7, 0}, false},
+	var tests = []testPairArrayBool{
+		{[9]int{4, 0, 0, 0, 0, 0, 0, 0, 0}, false},
+		{[9]int{4, 4, 0, 0, 0, 0, 0, 0, 0}, true},
+		{[9]int{}, false},
+		{[9]int{0, 2, 5, 2, 3, 0, 8, 7, 0}, true},
+		{[9]int{0, 2, 5, 1, 3, 0, 8, 7, 0}, false},
 	}
 
 	for _, test := range tests {
@@ -75,7 +75,7 @@ func TestHasDuplicates(t *testing.T) {
 }
 
 func TestIsGameOver(t *testing.T) {
-	var tests = [] testPairDataBool{
+	var tests = []testPairDataBool{
 		{"864371259325849761971265843436192587198657432257483916689734125713528694542916378", true},
 		{"004300209005009001070060043006002087190007400050083000600000105003508690042910300", false},
 	}
@@ -87,7 +87,7 @@ func TestIsGameOver(t *testing.T) {
 }
 
 func TestFindEmptyCase(t *testing.T) {
-	var tests = [] testTupleDataPosition{
+	var tests = []testTupleDataPosition{
 		{"864371259325849761971265843436192587198657432257483916689734125713528694542916370", 8, 8, nil},
 		{"864371259325849761971265843436192587198657432257483916689734125713528694542916378", -1, -1, errors.New("no empty case found")},
 	}

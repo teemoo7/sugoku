@@ -15,7 +15,7 @@ const size = 9
 const emptyValue = 0
 
 type game struct {
-	grid [size][size] int
+	grid [size][size]int
 }
 
 func main() {
@@ -47,7 +47,7 @@ func displayGame(game game) {
 /**
 Takes a string as an input, made of numbers, where each number is a case in the grid (0 means empty)
 E.g.: 004300209005009001070060043006002087190007400050083000600000105003508690042910300
- */
+*/
 func loadGame(rawData string) (game, error) {
 	game := game{}
 	array := strings.Split(rawData, "")
@@ -56,7 +56,7 @@ func loadGame(rawData string) (game, error) {
 	}
 	for i := 0; i < size; i++ {
 		for j := 0; j < size; j++ {
-			val, err := strconv.Atoi(array[size * i + j])
+			val, err := strconv.Atoi(array[size*i+j])
 			if err == nil && val >= emptyValue && val <= size {
 				game.grid[i][j] = val
 			} else {
@@ -64,11 +64,10 @@ func loadGame(rawData string) (game, error) {
 			}
 		}
 	}
-	if isValidGame(game) {
-		return game, nil
-	} else {
+	if !isValidGame(game) {
 		return game, errors.New("invalid game")
 	}
+	return game, nil
 }
 
 func isValidGame(game game) bool {
