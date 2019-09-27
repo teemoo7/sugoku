@@ -8,29 +8,34 @@ import (
 	"strings"
 )
 
+var logFatal = log.Fatal
+
 // Due to the game design, the size of the board also is the max possible value, and is also used as such
 const size = 9
 const emptyValue = 0
 
+type game struct {
+	grid [size][size] int
+}
+
 func main() {
-	game, err := loadGame("004300209005009001070060043006002087190007400050083000600000105003508690042910300")
-	//game, err := loadGame("004300209005009001070060043006002087190007400050083000600000105003508690042910300")
+	loadAndSolveGame("004300209005009001070060043006002087190007400050083000600000105003508690042910300")
+}
+
+func loadAndSolveGame(rawData string) {
+	game, err := loadGame(rawData)
 	if err != nil {
-		log.Fatal(err)
+		logFatal(err)
 	}
 	fmt.Println("Initial board:")
 	displayGame(game)
 	fmt.Println("Solving it...")
 	solution, err := solve(game)
 	if err != nil {
-		log.Fatal(err)
+		logFatal(err)
 	}
 	fmt.Println("Solution:")
 	displayGame(solution)
-}
-
-type game struct {
-	grid [size][size] int
 }
 
 func displayGame(game game) {
@@ -46,7 +51,7 @@ E.g.: 00430020900500900107006004300600208719000740005008300060000010500350869004
 func loadGame(rawData string) (game, error) {
 	game := game{}
 	array := strings.Split(rawData, "")
-	if len(array) < (size * size) {
+	if len(array) != (size * size) {
 		return game, errors.New("incorrect size for game raw data")
 	}
 	for i := 0; i < size; i++ {
@@ -68,7 +73,7 @@ func loadGame(rawData string) (game, error) {
 
 func isValidGame(game game) bool {
 	for _, line := range game.grid {
-		if hasDuplicatedValues(line) {
+		if hasDuplicates(line) {
 			return false
 		}
 	}
@@ -78,7 +83,7 @@ func isValidGame(game game) bool {
 		for j := 0; j < size; j++ {
 			column[j] = game.grid[j][i]
 		}
-		if hasDuplicatedValues(column) {
+		if hasDuplicates(column) {
 			return false
 		}
 	}
@@ -86,7 +91,7 @@ func isValidGame(game game) bool {
 	return true
 }
 
-func hasDuplicatedValues(array [size]int) bool {
+func hasDuplicates(array [size]int) bool {
 	for value := 1; value <= size; value++ {
 		found := false
 		for _, val := range array {
