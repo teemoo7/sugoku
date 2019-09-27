@@ -10,6 +10,8 @@ Such inputs can be found on many sites, among others [here](https://www.kaggle.c
 
 ## Example
 
+Below is an example demonstrating who the solver works. 
+
 ### Raw input
 
     004300209005009001070060043006002087190007400050083000600000105003508690042910300
