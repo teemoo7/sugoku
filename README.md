@@ -8,7 +8,7 @@ It takes a raw input string representing a sudoku grid (where `0` means empty) a
 
 Such inputs can be found on many sites, among others [here](https://www.kaggle.com/bryanpark/sudoku).
 
-## Example
+## Example
 
 Below is an example demonstrating who the solver works. 
 
