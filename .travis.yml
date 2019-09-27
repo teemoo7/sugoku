@@ -1,0 +1,12 @@
+language: go
+go:
+  - "1.13"
+
+before_install:
+  - go get github.com/stretchr/testify/assert
+before_script:
+  - go get -d ./...
+script:
+  - go build ./...
+  - ./scripts/golint.sh
+  - go test -cover -v ./...
