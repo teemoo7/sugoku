@@ -10,7 +10,7 @@ Such inputs can be found on many sites, among others [here](https://www.kaggle.c
 
 ## Example
 
-Below is an example demonstrating who the solver works. 
+Below is an example demonstrating how the solver works. 
 
 ### Raw input
 
